@@ -1,0 +1,4 @@
+{
+  "extends": "@adscrush/typescript-config/base.json"
+}
+

@@ -1,0 +1,20 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+# supply chain guard: never resolve a version published less than 7 days ago (value in minutes)
+# Compromised releases are often published to npm within a few days of the compromise, so this setting helps avoid those.
+minimumReleaseAge: 10080
+onlyBuiltDependencies:
+  - sharp
+  - esbuild
+allowBuilds:
+  core-js: false
+  core-js-pure: true
+  esbuild: true
+  msw: true
+  protobufjs: false
+  sharp: false
+  workerd: true
+overrides:
+  "@types/react": 19.2.14
+  "@types/react-dom": 19.2.3

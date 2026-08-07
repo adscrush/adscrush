@@ -1,0 +1,78 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab
+.circleci
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Build outputs
+.next
+dist
+build
+out
+.turbo
+.vercel
+
+# Testing
+coverage
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Monorepo specific
+.pnpm-store
+.agents
+.agent
+.planning
+.graphify_*
+graphify-out
+.opencode
+*.local
+
+# Documentation build
+docs/
+data/
+
+# SDK
+packages/web-sdk/deploy
+
+# Misc
+*.pem
+.qoder
+.kilo/
+.claude/
+.plans/
+.kiro/
+agent/
+get-shit-done
+gsd-file-manifest.json
+plan-phase-1.md
+.mcp.json
+.opencode-mcp.json

@@ -1,0 +1,38 @@
+node_modules/
+dist/
+vendor/
+*.generated.py
+graphify-out/
+
+# --- keep the graph scoped to real AdsCrush code + product docs ---
+
+# graphify's own output / artifacts
+.graphify_*
+gsd-file-manifest.json
+
+# agent / AI tooling (not application code)
+get-shit-done/
+.agent/
+.agents/
+agents/
+.opencode/
+.kilo/
+.qoder/
+.planning/
+.windsurf/
+.gemini/
+
+# editor / tooling config
+.vscode/
+.mcp.json
+.opencode-mcp.json
+skills-lock.json
+AGENTS.md
+GEMINI.md
+
+# generated Drizzle migration snapshots (not source)
+packages/db/migrations/meta/
+
+# Claude tooling, but keep product planning docs
+.claude/*
+!.claude/plans/

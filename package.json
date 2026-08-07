@@ -1,0 +1,40 @@
+{
+  "name": "adscrush",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "sys-link": "./env-links.sh",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "db:push": "turbo db:push --filter=@adscrush/db",
+    "db:generate": "turbo db:generate --filter=@adscrush/db",
+    "db:migrate": "turbo db:migrate --filter=@adscrush/db",
+    "db:seed": "pnpm --filter @adscrush/db db:seed",
+    "db:studio": "pnpm --filter @adscrush/db db:studio",
+    "db:postinit": "pnpm --filter @adscrush/db db:postinit",
+    "db:partition:manage": "pnpm --filter @adscrush/db db:partition:manage",
+    "db:purge:pii": "pnpm --filter @adscrush/db db:purge:pii",
+    "deploy:web-sdk:pages": "pnpm --filter @adscrush/web-sdk deploy:pages",
+    "email:dev": "pnpm --filter @adscrush/email email:dev",
+    "email:build": "pnpm --filter @adscrush/email email:build",
+    "email:export": "pnpm --filter @adscrush/email email:export"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "turbo": "^2.8.17",
+    "typescript": "5.9.3"
+  },
+  "packageManager": "pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72",
+  "engines": {
+    "node": ">=20"
+  }
+}

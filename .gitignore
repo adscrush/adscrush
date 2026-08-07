@@ -1,0 +1,59 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Build Outputs
+.next/
+out/
+build
+dist
+
+# SDK deploy folder
+packages/web-sdk/deploy
+
+
+# Debug
+npm-debug.log*
+
+# Misc
+.DS_Store
+*.pem
+.qoder
+.agents
+.agent
+.pnpm-store
+# docs/*
+.kilo/*
+.claude/*
+graphify-out
+.graphify_*
+.plans/*
+.kiro/*
+.opencode
+agents
+get-shit-done
+.planning
+.opencode-mcp.json
+.mcp.json
+gsd-file-manifest.json
+plan-phase-1.md
+.env.production
