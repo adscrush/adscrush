@@ -1,0 +1,17 @@
+export const testimonials = [
+  { handle: "@opswithnina", text: "Adscrush gave our team a single source of truth for clicks, conversions, and payout checks.", seed: "opswithnina" },
+  { handle: "@masonbuys", text: "We stopped stitching together spreadsheets and finally started acting on real-time attribution data.", seed: "masonbuys" },
+  { handle: "@growthali", text: "The homepage promise matched the product: fast visibility, clean reporting, fewer surprises.", seed: "growthali" },
+  { handle: "@partnerjen", text: "Our affiliate managers can spot underperforming partners in minutes instead of waiting for weekly reports.", seed: "partnerjen" },
+  { handle: "@buildwithray", text: "Implementation felt straightforward, and the reporting surface is much easier to trust day to day.", seed: "buildwithray" },
+  { handle: "@mediabuyermax", text: "The dark UI and the performance views feel built for operators who live inside dashboards.", seed: "mediabuyermax" },
+  { handle: "@oliviaops", text: "Postback issues used to hide for hours. Now we catch them early and move faster.", seed: "oliviaops" },
+  { handle: "@teamrevops", text: "It makes channel performance readable for both operators and leadership without extra prep work.", seed: "teamrevops" },
+  { handle: "@austintracks", text: "The interface feels polished, but the bigger win is how much manual reconciliation it removed.", seed: "austintracks" },
+  { handle: "@founderleena", text: "Great for teams that want better attribution discipline without building everything from scratch.", seed: "founderleena" },
+  { handle: "@paidsocialsam", text: "We used to check four tools before every budget change. Now we open one dashboard.", seed: "paidsocialsam" },
+  { handle: "@netopsivy", text: "The alerting and visibility around partner quality have been especially useful for our team.", seed: "netopsivy" },
+  { handle: "@revtechomar", text: "It gives technical and non-technical stakeholders the same picture of what is actually happening.", seed: "revtechomar" },
+  { handle: "@growthmira", text: "Adscrush helped us turn noisy campaign data into something the whole team can act on.", seed: "growthmira" },
+  { handle: "@julesreports", text: "Clearer reporting, fewer blind spots, and a much better operator experience overall.", seed: "julesreports" },
+];

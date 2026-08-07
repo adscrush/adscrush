@@ -1,0 +1,5 @@
+export { DepartmentsDataTable } from "./components/departments-data-table"
+export { DeleteDepartmentDialog } from "./components/delete-department-dialog"
+export { UpdateDepartmentDialog } from "./components/update-department-dialog"
+export { DepartmentSelect } from "./components/department-select"
+export { useDepartments } from "./queries"
