@@ -1,0 +1,490 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
+
+@utility prose {
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-invert-links: var(--color-primary);
+}
+
+@custom-variant dark (&:is(.dark *));
+@source "../../../apps/**/*.{ts,tsx}";
+@source "../../../components/**/*.{ts,tsx}";
+@source "../**/*.{ts,tsx}";
+
+* {
+  scrollbar-width: thin; /* For Firefox */
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.488 0.243 264.376);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --chart-1: oklch(0.905 0.182 98.111);
+  --chart-2: oklch(0.795 0.184 86.047);
+  --chart-3: oklch(0.681 0.162 75.834);
+  --chart-4: oklch(0.554 0.135 66.442);
+  --chart-5: oklch(0.476 0.114 61.907);
+  --radius: 0.45rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.546 0.245 262.881);
+  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  /* Home Page Features */
+  --card-fill: 224 26% 8%;
+  --glow: 241 42% 62%;
+  --radius-hero: 2.1875rem;
+  --home-hero-surface: linear-gradient(
+    180deg,
+    oklch(0.215 0.02 258 / 0.98) 0%,
+    oklch(0.162 0.014 258 / 1) 100%
+  );
+  --home-glass-surface: oklch(0.985 0 0 / 0.1);
+  --home-card-surface: oklch(0.985 0 0 / 0.06);
+  --home-soft-border: oklch(1 0 0 / 0.12);
+  --home-spotlight: oklch(0.67 0.17 257 / 0.42);
+  --home-cta-background: oklch(0.985 0 0);
+  --home-cta-foreground: oklch(0.141 0.005 285.823);
+  --home-cta-muted: oklch(0.985 0 0 / 0.1);
+  --destructive-foreground: var(--color-red-700);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+  --invert: var(--color-zinc-900);
+  --invert-foreground: var(--color-zinc-50);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.424 0.199 265.638);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+  --chart-1: oklch(0.905 0.182 98.111);
+  --chart-2: oklch(0.795 0.184 86.047);
+  --chart-3: oklch(0.681 0.162 75.834);
+  --chart-4: oklch(0.554 0.135 66.442);
+  --chart-5: oklch(0.476 0.114 61.907);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.623 0.214 259.815);
+  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
+
+  /* Home Page Features */
+  --card-fill: 224 26% 8%;
+  --glow: 241 42% 62%;
+  --home-hero-surface: linear-gradient(
+    180deg,
+    oklch(0.215 0.02 258 / 0.98) 0%,
+    oklch(0.162 0.014 258 / 1) 100%
+  );
+  --home-glass-surface: oklch(0.985 0 0 / 0.08);
+  --home-card-surface: oklch(0.985 0 0 / 0.05);
+  --home-soft-border: oklch(1 0 0 / 0.12);
+  --home-spotlight: oklch(0.67 0.17 257 / 0.42);
+  --home-cta-background: oklch(0.985 0 0);
+  --home-cta-foreground: oklch(0.141 0.005 285.823);
+  --home-cta-muted: oklch(0.985 0 0 / 0.1);
+  --destructive-foreground: var(--color-red-400);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-400);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
+  --invert: var(--color-zinc-700);
+  --invert-foreground: var(--color-zinc-50);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning: var(--warning);
+  --color-success-foreground: var(--success-foreground);
+  --color-success: var(--success);
+  --color-info-foreground: var(--info-foreground);
+  --color-info: var(--info);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-invert-foreground: var(--invert-foreground);
+  --color-invert: var(--invert);
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: var(--primary);
+    opacity: 1;
+  }
+  50% {
+    border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+    opacity: 0.6;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@utility animate-border-pulse {
+  animation: borderPulse 1s ease-in-out infinite;
+}
+
+@layer utilities {
+  .home-hero-surface {
+    background: var(--home-hero-surface);
+  }
+
+  .home-glass-surface {
+    background: var(--home-glass-surface);
+    backdrop-filter: blur(14px);
+  }
+
+  .home-card-surface {
+    background: var(--home-card-surface);
+    backdrop-filter: blur(10px);
+  }
+
+  .home-soft-border {
+    border-color: var(--home-soft-border);
+  }
+
+  .home-spotlight {
+    background: radial-gradient(ellipse 154% 126% at 50% 3%, #0026e200 34%, #0026e299 64%, #fff);
+  }
+
+  .home-button-hero {
+    background: var(--home-cta-background);
+    color: var(--home-cta-foreground);
+  }
+
+  .home-button-hero:hover {
+    background: color-mix(in oklab, var(--home-cta-background) 92%, transparent);
+  }
+
+  .home-button-glass {
+    background: var(--home-cta-muted);
+    border-color: var(--home-soft-border);
+    color: var(--foreground);
+    backdrop-filter: blur(12px);
+  }
+
+  .home-button-glass:hover {
+    background: color-mix(in oklab, var(--home-cta-muted) 82%, white 18%);
+  }
+
+  .gradient-card {
+    background: radial-gradient(ellipse 154% 126% at 50% 3%, #0026e200 34%, #0026e299 64%, #fff);
+  }
+
+  .card-fill {
+    background: hsl(var(--card-fill) / 0.65);
+    backdrop-filter: blur(8px);
+  }
+
+  .inset-glow {
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.08), inset 0 0 40px hsl(var(--glow) / 0.08), 0 20px 45px oklch(0.141 0.005 285.823 / 0.45);
+  }
+
+  .soft-border {
+    @apply border-border/10;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 650ms ease, transform 650ms ease;
+    will-change: transform, opacity;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .star-dot {
+    position: absolute;
+    border-radius: 9999px;
+    @apply bg-foreground;
+    pointer-events: none;
+  }
+}
+
+@utility scroll-fade-effect-y {
+  --mask-height: 64px;
+  --mask-offset-top: 0px;
+  --mask-offset-bottom: 0px;
+  --scroll-buffer: 2rem;
+
+  /* Set up the mask layers */
+  mask-image:
+    linear-gradient(to top, transparent, black 90%),
+    linear-gradient(to bottom, transparent 0%, black 100%),
+    linear-gradient(black, black);
+
+  mask-size:
+    100% var(--top-mask-height),
+    100% var(--bottom-mask-height),
+    100% 100%;
+  mask-repeat: no-repeat, no-repeat, no-repeat;
+  mask-position:
+    0 var(--mask-offset-top),
+    0 calc(100% - var(--mask-offset-bottom)),
+    0 0;
+  /* Exclude the gradient areas from the solid mask */
+  mask-composite: exclude;
+
+  animation-name: show-top-mask, hide-bottom-mask;
+  animation-timeline: scroll(self), scroll(self);
+  animation-range:
+    0 var(--scroll-buffer),
+    calc(100% - var(--scroll-buffer)) 100%;
+  animation-fill-mode: both;
+}
+
+@utility scroll-fade-effect-x {
+  --mask-width: 64px;
+  --mask-offset-left: 0px;
+  --mask-offset-right: 0px;
+  --scroll-buffer: 2rem;
+
+  mask-image:
+    linear-gradient(to left, transparent, black 90%),
+    linear-gradient(to right, transparent 0%, black 100%),
+    linear-gradient(black, black);
+
+  mask-size:
+    var(--left-mask-width) 100%,
+    var(--right-mask-width) 100%,
+    100% 100%;
+  mask-repeat: no-repeat, no-repeat, no-repeat;
+  mask-position:
+    var(--mask-offset-left) 0,
+    calc(100% - var(--mask-offset-right)) 0,
+    0 0;
+  mask-composite: exclude;
+
+  animation-name: show-left-mask, hide-right-mask;
+  animation-timeline: scroll(self inline), scroll(self inline);
+  animation-range:
+    0 var(--scroll-buffer),
+    calc(100% - var(--scroll-buffer)) 100%;
+  animation-fill-mode: both;
+}
+
+/* ---- Prose link behavior ---- */
+.prose a {
+  cursor: pointer;
+  text-underline-offset: 2px;
+}
+.prose a:hover {
+  opacity: 0.8;
+}
+
+/* ------------------ TABLE STYLES ------------------ */
+
+/* Custom cursor pointer for interactive elements in the data table */
+button,
+.rdp-button,
+.rdp-day,
+select,
+input[type="checkbox"],
+input[type="radio"],
+[role="button"],
+[role="tab"],
+.react-day-picker button,
+[data-slot="select-trigger"],
+[data-slot="checkbox"],
+.day-range-start,
+.day-range-end,
+.day-range-middle,
+[data-radix-collection-item],
+[data-slot="button"],
+[data-slot="day"],
+[data-slot="select-item"] {
+  cursor: pointer !important;
+}
+
+/* Fix specifically for calendar date picker buttons and elements */
+.rdp-button,
+.rdp-nav_button,
+.rdp-month-dropdown-button,
+.rdp-dropdown_option,
+[data-testid="rdp-nav-button-previous"],
+[data-testid="rdp-nav-button-next"],
+[data-slot="day"],
+[data-slot="day_button"],
+[data-slot="day_selected"],
+[data-slot="day_range"],
+[data-slot="day_today"],
+[data-slot="day_outside"],
+[data-slot="day_disabled"],
+[data-slot="day_hidden"],
+.day-outside,
+.day-range-start,
+.day-range-end,
+.day-selected,
+div[data-testid="calendar"] button {
+  cursor: pointer !important;
+}
+
+/* Fix for pagination buttons and components */
+.flex-1 button,
+.h-8.w-8.p-0,
+nav button,
+[data-state="inactive"],
+[data-orientation="horizontal"],
+[data-orientation="vertical"] {
+  cursor: pointer !important;
+}
+
+/* Fixes for Select elements and dropdowns */
+[data-radix-select-trigger],
+[data-radix-popper-content-wrapper] *,
+[data-radix-collection-item],
+[data-value],
+[role="combobox"],
+[role="listbox"],
+[role="option"] {
+  cursor: pointer !important;
+}
+
+/* Fix for checkbox in table rows and other inputs */
+[data-state="checked"],
+[data-state="unchecked"],
+[data-state="indeterminate"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="time"],
+input[type="week"] {
+  cursor: pointer !important;
+}
+
+/* Fix for calendar date picker component specifically */
+[id^="calendar-date-picker"],
+[id^="calendar-date-picker"] *,
+[id="rdp-1"],
+[id="rdp-1"] *,
+[id="rdp-2"],
+[id="rdp-2"] * {
+  cursor: pointer !important;
+}
+
+/* Table column resizing styles - OPTIMIZED FOR PERFORMANCE */
+@layer components {
+  /* Fixed table layout for consistent column widths */
+  .resizable-table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .resizable-table th,
+  .resizable-table td {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Prevent text selection during resize - ONLY on user-select */
+  body[data-resizing="true"] {
+    cursor: col-resize !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+
+  /* Apply col-resize cursor to all elements during resize */
+  body[data-resizing="true"] * {
+    cursor: col-resize !important;
+  }
+
+  /* Remove ALL transitions during active resize for instant feedback */
+  .resizable-table th[data-column-resizing="true"] {
+    transition: none !important;
+  }
+}

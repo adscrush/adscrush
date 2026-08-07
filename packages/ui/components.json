@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "radix-mira",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "tabler",
+  "rtl": false,
+  "menuColor": "inverted-translucent",
+  "menuAccent": "subtle",
+  "aliases": {
+    "components": "@adscrush/ui/components",
+    "utils": "@adscrush/ui/lib/utils",
+    "ui": "@adscrush/ui/components",
+    "lib": "@adscrush/ui/lib",
+    "hooks": "@adscrush/ui/hooks"
+  },
+  "registries": {
+    "@lytenyte": "https://www.1771technologies.com/r/{name}.json",
+    "@coss": "https://coss.com/ui/r/{name}.json",
+    "@reui": "https://reui.io/r/{style}/{name}.json"
+  }
+}
