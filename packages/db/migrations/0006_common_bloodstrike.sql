@@ -1,0 +1,1 @@
+ALTER TABLE "conversions" ADD COLUMN "method" text DEFAULT 'pixel' NOT NULL;

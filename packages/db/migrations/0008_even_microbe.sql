@@ -1,0 +1,1 @@
+ALTER TABLE "media_buyers" ADD COLUMN "permissions" jsonb DEFAULT '[]'::jsonb NOT NULL;

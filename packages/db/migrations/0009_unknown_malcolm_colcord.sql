@@ -1,0 +1,3 @@
+ALTER TABLE "campaigns" ADD COLUMN "created_by_media_buyer_id" text;--> statement-breakpoint
+ALTER TABLE "campaigns" ADD CONSTRAINT "campaigns_created_by_media_buyer_id_media_buyers_id_fk" FOREIGN KEY ("created_by_media_buyer_id") REFERENCES "public"."media_buyers"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
+CREATE INDEX "campaigns_created_by_media_buyer_id_idx" ON "campaigns" USING btree ("created_by_media_buyer_id");

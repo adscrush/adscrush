@@ -1,0 +1,53 @@
+{
+  "name": "@adscrush/db",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./schema": "./src/schema/index.ts",
+    "./schema/auth": "./src/schema/auth.ts",
+    "./drizzle": "./src/drizzle.ts",
+    "./utils": "./src/utils.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./encrypt": "./scripts/encrypt.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate --config=./drizzle.config.ts",
+    "db:migrate": "drizzle-kit migrate --config=./drizzle.config.ts",
+    "db:push": "drizzle-kit push --config=./drizzle.config.ts",
+    "db:studio": "drizzle-kit studio",
+    "db:seed:categories": "bun src/seed/categories.ts",
+    "db:seed:languages": "bun src/seed/languages.ts",
+    "db:seed:entities": "bun src/seed/entities.ts",
+    "db:seed:products": "bun src/seed/products.ts",
+    "db:seed:funnels": "bun src/seed/funnels.ts",
+    "db:seed:ad-accounts": "bun src/seed/ad-accounts.ts",
+    "db:seed": "bun src/seed/index.ts",
+    "db:postinit": "bun src/sql/apply.ts",
+    "db:partition:manage": "bun scripts/partition-manager.ts",
+    "db:purge:pii": "bun scripts/purge-pii.ts",
+    "docs": "echo 'See SCHEMA.md, INDEXING.md, OPERATIONS.md in packages/db/'"
+  },
+  "dependencies": {
+    "@adscrush/shared": "workspace:*",
+    "@date-fns/tz": "^1.4.1",
+    "@date-fns/utc": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "drizzle-orm": "^0.43.1",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "@types/node": "^25.1.0",
+    "dotenv": "^17.2.2",
+    "drizzle-kit": "^0.31.1",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
+  }
+}
