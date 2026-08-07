@@ -1,0 +1,6 @@
+export { MagicLinkEmail } from "./templates/magic-link-email"
+export { PasswordResetEmail } from "./templates/password-reset-email"
+export { PasswordResetSuccess } from "./templates/password-reset-success"
+export { VerifyEmail } from "./templates/verify-email"
+export { TwoFactorChallenge } from "./templates/two-factor-challenge"
+export { render } from "@react-email/render"

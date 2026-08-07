@@ -1,0 +1,36 @@
+{
+  "name": "@adscrush/email",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./render": "./src/index.ts"
+  },
+  "scripts": {
+    "email:dev": "email dev --dir=src/templates --port 4000",
+    "email:build": "email build",
+    "email:export": "email export",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-email/components": "1.0.8",
+    "@react-email/render": "^1.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "eslint": "^9.39.2",
+    "typescript": "5.9.3",
+    "@react-email/preview-server": "5.2.8",
+    "@types/node": "25.0.0",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "react-email": "5.2.8"
+  }
+}
