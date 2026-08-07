@@ -1,0 +1,42 @@
+{
+  "name": "@adscrush/shared",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./config/*": "./src/config/*.ts",
+    "./constants/*": "./src/constants/*.ts",
+    "./validators/*": "./src/validators/*.ts",
+    "./types/*": "./src/types/*.ts",
+    "./utils/*": "./src/utils/*.ts",
+    "./lib/*": "./src/lib/*.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@date-fns/tz": "^1.4.1",
+    "@date-fns/utc": "^2.1.1",
+    "countries-list": "^3.1.1",
+    "date-fns": "^4.4.0",
+    "nanoid": "^5.1.7",
+    "nodemailer": "^8.0.4",
+    "ua-parser-js": "^2.0.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "@tanstack/react-table": "^8.21.3",
+    "@types/node": "^25.1.0",
+    "@types/nodemailer": "^7.0.11",
+    "eslint": "^9.39.2",
+    "fast-check": "^3.23.2",
+    "nuqs": "^2.8.9",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
