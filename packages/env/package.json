@@ -1,0 +1,27 @@
+{
+  "name": "@adscrush/env",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./shared": "./src/shared.ts",
+    "./server": "./src/server.ts",
+    "./client": "./src/client.ts"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.39.2",
+    "typescript": "5.9.3"
+  }
+}
