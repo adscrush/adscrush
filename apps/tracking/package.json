@@ -1,0 +1,39 @@
+{
+  "name": "@adscrush/tracking",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "start": "bun dist/index.js",
+    "dev": "bun --watch run src/index.ts",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@adscrush/db": "workspace:*",
+    "@adscrush/env": "workspace:*",
+    "@adscrush/shared": "workspace:*",
+    "@elysiajs/cors": "^1.4.2",
+    "@maxmind/geoip2-node": "^4.2.0",
+    "dotenv": "^17.3.1",
+    "elysia": "^1.3.4",
+    "geoip-lite": "^2.0.1",
+    "ioredis": "^5.5.0",
+    "ua-parser-js": "^2.0.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "eslint": "^9.39.2",
+    "@types/bun": "^1.2.17",
+    "@types/geoip-lite": "^1.4.4",
+    "@types/node": "^25.6.0",
+    "@types/ua-parser-js": "^0.7.39",
+    "fast-check": "^3.23.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
