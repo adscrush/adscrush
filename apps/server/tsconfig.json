@@ -1,0 +1,14 @@
+{
+  "extends": "@adscrush/typescript-config/bun.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true
+  },
+  "include": ["src"]
+}
