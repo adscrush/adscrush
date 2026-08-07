@@ -1,0 +1,33 @@
+---
+title: "Advertisers"
+description: "Manage advertiser relationships and CRM"
+---
+
+Advertisers are the brands or businesses that pay for conversions. AdsCrush provides a full CRM for managing advertiser relationships.
+
+## Advertiser Fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Primary contact name |
+| **Company** | Company name |
+| **Email** | Contact email address |
+| **Status** | Active, Inactive, Pending |
+| **Account Manager** | Internal employee assigned to manage the relationship |
+
+## Statuses
+
+| Status | Description |
+|--------|-------------|
+| `active` | Active advertiser with live campaigns |
+| `inactive` | Disabled account |
+| `pending` | Awaiting approval or setup |
+
+## Bulk Operations
+
+- **Bulk Delete** — Remove multiple advertisers at once
+- **Bulk Status Update** — Change status for multiple advertisers
+
+## Advertiser Access Control
+
+Advertisers have their own login role (`advertiser`) and can be scoped to only see their own products, campaigns, and data. The multi-tenant access control system ensures advertisers never see each other's data.

@@ -1,0 +1,28 @@
+---
+title: "Landing Page Selection"
+description: "How AdsCrush selects which landing page to redirect to"
+---
+
+## Selection Priority
+
+1. **Direct ID** (`lp` parameter) — Use a specific landing page:
+   ```
+   https://tracking.example.com/c?c=abc&aa=123&lp=landing_page_xyz
+   ```
+
+2. **Named** (`mo` parameter) — Match by name (case-insensitive):
+   ```
+   https://tracking.example.com/c?c=abc&aa=123&mo=blackfriday
+   ```
+   Set `mo=r` for random selection.
+
+3. **Weighted Random** — If neither `lp` nor `mo` is provided, randomly selects from active pages using assigned weights. Higher weight = more traffic.
+
+## Funnel Override
+
+Use `f` parameter to override the campaign's linked funnel:
+```
+https://tracking.example.com/c?c=abc&aa=123&f=funnel_xyz
+```
+
+Landing page URLs support dynamic macro substitution. See [URL Macros](/tracking/url-macros).

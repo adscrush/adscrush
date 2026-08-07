@@ -1,0 +1,127 @@
+---
+title: "API Reference"
+description: "Complete reference for all SDK methods"
+icon: "book"
+---
+
+## Core Methods
+
+### `init(config?)`
+
+Initialize the SDK (optional — auto-initializes by default).
+
+```javascript
+AdsCrushSDK.init({
+  domain: "track.yourdomain.com", // Custom tracking domain (default: "track.adscrush.com")
+  paramName: "clickid",        // Custom URL parameter (default: "tid")
+  cookieDomain: ".example.com", // Cross-subdomain tracking
+  cookieExpiry: 30,            // Days to keep click ID
+  debug: false,                // Enable debug logging
+  autoInit: true               // Auto-capture on init
+})
+```
+
+The `domain` option is used by **both** `trackConversion()` and `trackLead()`.
+Per-call `domain` overrides take precedence over this config value.
+
+### `trackConversion(options)`
+
+Track a conversion event.
+
+```javascript
+const success = await AdsCrushSDK.trackConversion({
+  conversionData: {
+    event: "purchase",
+    saleAmount: "99.99",
+    payout: "15.00",
+    currency: "USD",
+    advSub1: "order_12345"
+  },
+  method: "pixel",
+  domain: "track.yourdomain.com", // Optional per-call override
+  keymapping: ["advSub2:aff_sub2"], // Fill advSub2 from ?aff_sub2=...
+  onSuccess: (response) => { },
+  onError: (error) => { }
+})
+```
+
+**Returns:** `Promise<boolean>`
+
+### `trackLead(options)`
+
+Track a lead form submission.
+
+```javascript
+const success = await AdsCrushSDK.trackLead({
+  name: "John Doe",
+  phone: "+1234567890",
+  email: "john@example.com",
+  address: "221B Baker Street",
+  pincode: "400001",
+  city: "Mumbai",
+  state: "Maharashtra",
+  method: "pixel",
+  domain: "track.yourdomain.com", // Optional per-call override
+  keymapping: ["sub1:aff_sub1"], // Fill sub1 from ?aff_sub1=...
+  onSuccess: (response) => { },
+  onError: (error) => { }
+})
+```
+
+**Returns:** `Promise<boolean>`
+
+### `getClickId()`
+
+Get the currently stored click ID. Returns `string | null`.
+
+### `setClickId(clickId)`
+
+Manually set the click ID.
+
+### `hasTrackedConversion(event?)`
+
+Check if a conversion has been tracked. Returns `boolean`.
+
+### `setDebug(enabled)`
+
+Enable/disable debug logging.
+
+### `clear()`
+
+Clear all stored data (click ID, dedup flags).
+
+### `destroy()`
+
+Fully reset the SDK. Call `init()` again to reinitialize.
+
+### `getConfig()`
+
+Get current configuration. Returns `AdscrushConfig | null`.
+
+---
+
+## Configuration Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `domain` | `string` | `"track.adscrush.com"` | Tracking domain used by both `trackConversion()` and `trackLead()` (bare hostnames → `https://`) |
+| `paramName` | `string` | `"tid"` | URL parameter name for click ID |
+| `cookieDomain` | `string` | — | Cross-subdomain cookie sharing |
+| `cookieExpiry` | `number` | `30` | Days to keep click ID |
+| `debug` | `boolean` | `false` | Enable console logging |
+| `autoInit` | `boolean` | `true` | Auto-capture click ID on load |
+| `keymapping` | `string[]` | — | Map URL params to SDK fields for both tracking methods |
+
+---
+
+## TypeScript
+
+Full TypeScript definitions included:
+
+```typescript
+import AdsCrushSDK, {
+  AdscrushConfig,
+  ConversionOptions,
+  ConversionResponse
+} from '@adscrush/web-sdk'
+```

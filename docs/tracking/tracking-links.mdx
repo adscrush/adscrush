@@ -1,0 +1,32 @@
+---
+title: "Tracking Links"
+description: "How tracking links are generated and distributed"
+---
+
+Tracking links are auto-generated when you assign an ad account to a campaign.
+
+## Format
+
+```
+https://{TRACKING_DOMAIN}/c?c={campaignId}&aa={adAccountId}
+```
+
+## Creative-Parameterized
+
+For creative performance tracking:
+
+```
+https://tracking.example.com/c?c=campaign_abc&aa=adaccount_123&cr=creative_456
+```
+
+## With Landing Page
+
+Specify which landing page to use (omit `lp` for weighted random):
+
+```
+https://tracking.example.com/c?c=campaign_abc&aa=adaccount_123&cr=creative_456&lp=landing_789
+```
+
+## Regenerating Links
+
+Use "Regenerate Tracking Links" in campaign settings to rebuild all links with the current tracking domain.

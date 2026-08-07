@@ -1,0 +1,34 @@
+---
+title: "URL Macros"
+description: "Dynamic token substitution in landing page URLs and postback URLs"
+---
+
+## Click-Time Macros
+
+Replaced at redirect time when a user clicks a tracking link:
+
+| Token | Description |
+|-------|-------------|
+| `{tid}` | System transaction ID (UUID) |
+| `{campaign_id}` | Campaign ID |
+| `{ad_account_id}` | Ad Account ID |
+| `{source}` | Resolved traffic source |
+| `{funnel_id}` | Funnel ID |
+| `{creative_id}` | Creative ID |
+
+**Example:** `https://offer.com/checkout?clickid={tid}&source={source}`
+
+## Postback Tokens
+
+Replaced when a conversion postback fires:
+
+| Token | Description |
+|-------|-------------|
+| `{payout}` | Payout amount |
+| `{revenue}` | Revenue amount |
+| `{currency}` | Currency code |
+| `{event}` | Goal/event name |
+| `{status}` | Conversion status |
+| `{sale_amount}` | Sale amount |
+
+AdsCrush automatically injects `clickid` into landing page URLs regardless of macro usage.

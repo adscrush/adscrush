@@ -1,0 +1,30 @@
+---
+title: "Geo & Device Data"
+description: "Geolocation, network, and device information captured per click"
+---
+
+## IP Geolocation
+
+| Field | Source | Description |
+|-------|--------|-------------|
+| `country` | geoip-lite | ISO 3166-1 alpha-2 country code |
+| `city` | geoip-lite | City name |
+| `state/region` | geoip-lite | State or region code |
+| `ISP` | MaxMind ASN DB | Internet Service Provider name |
+| `ASN` | MaxMind ASN DB | Autonomous System Number |
+
+## Device Detection
+
+Parsed from User-Agent via UAParser:
+
+| Field | Description |
+|-------|-------------|
+| `device_type` | mobile, tablet, desktop, tv, console, wearable, embedded |
+| `device_vendor` | Device manufacturer |
+| `device_model` | Device model |
+| `os` / `os_version` | Operating system and version |
+| `browser` / `browser_version` | Browser name and version |
+
+## Privacy
+
+IP addresses and User-Agent strings are encrypted at rest. IPs are hashed for deduplication.

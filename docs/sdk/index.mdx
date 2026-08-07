@@ -1,0 +1,60 @@
+---
+title: "Web SDK"
+description: "Lightweight JavaScript library for conversion tracking"
+icon: "code"
+---
+
+## Installation
+
+```html
+<head>
+  <script src="https://sdk.adscrush.com/v1/index.iife.min.js"></script>
+</head>
+```
+
+The SDK auto-initializes and captures the `tid` parameter from your URL.
+
+## NPM (Optional)
+
+```bash
+npm install @adscrush/web-sdk
+```
+
+```javascript
+import AdsCrushSDK from '@adscrush/web-sdk'
+```
+
+## Configuration (Optional)
+
+Set before loading the SDK:
+
+```html
+<script>
+  window.adscrushConfig = {
+    domain: 'track.yourdomain.com', // Custom tracking domain (default: "track.adscrush.com")
+    paramName: 'clickid',    // Custom URL parameter (default: "tid")
+    cookieDomain: '.example.com',  // Cross-subdomain tracking
+    cookieExpiry: 30,        // Days to keep click ID
+    debug: true,             // Enable console logging
+    keymapping: ['sub1:aff_sub1'] // Map URL params to SDK fields
+  }
+</script>
+<script src="https://sdk.adscrush.com/v1/index.iife.min.js"></script>
+```
+
+The `domain` option is used by **both** `trackConversion()` and `trackLead()`.
+Per-call `domain` overrides take precedence over this config value.
+
+## Manual Click ID
+
+```javascript
+AdsCrushSDK.setClickId('abc-123-def-456')
+```
+
+## Verify
+
+```javascript
+console.log(AdsCrushSDK.getClickId()) // Click ID or null
+```
+
+**See also:** [Track Clicks](/sdk/track-click) · [Track Conversions](/sdk/track-conversion) · [Track Leads](/sdk/track-lead) · [API Reference](/sdk/api-reference)

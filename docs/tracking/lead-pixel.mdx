@@ -1,0 +1,63 @@
+---
+title: "Lead Pixel Tracking"
+description: "Fire-and-forget lead submission via a 1x1 transparent GIF"
+---
+
+## Endpoint
+
+```bash
+GET https://track.adscrush.com/lead/pixel?tid={clickId}&name=John&phone=%2B1234567890&email=john@example.com
+```
+
+## Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `tid` | ✅ | Click ID from tracking link |
+| `name` | ❌ | Lead's full name |
+| `phone` | ❌ | Phone number |
+| `email` | ❌ | Email address |
+| `address` | ❌ | Street address |
+| `pincode` | ❌ | Postal code / pincode |
+| `city` | ❌ | City |
+| `state` | ❌ | State or province |
+| `sub1-sub5` | ❌ | Custom sub-parameters |
+| `payout` | ❌ | Payout override |
+| `currency` | ❌ | Currency code |
+
+## Curl Example
+
+Copy-paste ready — replace `tid` with your click ID:
+
+```bash
+curl -G https://track.adscrush.com/lead/pixel \
+  --data-urlencode "tid=550e8400-e29b-41d4-a716-446655440000" \
+  --data-urlencode "name=John Doe" \
+  --data-urlencode "phone=+1234567890" \
+  --data-urlencode "email=john@example.com" \
+  --data-urlencode "address=221B Baker Street" \
+  --data-urlencode "pincode=400001" \
+  --data-urlencode "city=Mumbai" \
+  --data-urlencode "state=Maharashtra"
+```
+
+## HTML Example
+
+```html
+<img src="https://track.adscrush.com/lead/pixel?tid=550e8400-e29b-41d4-a716-446655440000&name=John+Doe&phone=%2B1234567890&email=john%40example.com"
+     width="1" height="1" style="display:none" />
+```
+
+## How It Works
+
+1. Browser loads the pixel image
+2. Server extracts `tid`, looks up the click
+3. Lead is processed in the background (fire-and-forget)
+4. Returns a 1x1 transparent GIF (43 bytes)
+
+## Limitations
+
+- No JSON response (only a GIF)
+- PII in URL may appear in server logs
+- Browser must load the image
+- **Address fields are PII too** — for sensitive lead data (address, pincode), prefer the [Postback API](/tracking/lead-postback) or the [Web SDK](/sdk/track-lead) with `method: "postback"` so the data never appears in a URL.

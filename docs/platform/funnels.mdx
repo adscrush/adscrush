@@ -1,0 +1,34 @@
+---
+title: "Funnels"
+description: "Create and manage funnels with landing pages"
+---
+
+Funnels group landing pages together and control traffic distribution.
+
+## Fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Funnel display name |
+| **Product** | Linked product |
+| **Language** | Target language |
+| **Status** | Active / Inactive |
+
+## Landing Pages
+
+Each funnel contains one or more landing pages:
+
+| Field | Description |
+|-------|-------------|
+| **URL** | Landing page URL (supports [URL macros](/tracking/url-macros)) |
+| **Name** | Optional name for MO-parameter targeting |
+| **Weight** | Traffic distribution weight (higher = more traffic) |
+| **Status** | Active / Inactive |
+
+## Selection Priority
+
+1. `lp` parameter → specific landing page
+2. `mo` parameter → match by name
+3. Weighted random from active pages
+
+See [Landing Page Selection](/tracking/landing-pages) for details.

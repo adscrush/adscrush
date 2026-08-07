@@ -1,0 +1,16 @@
+---
+title: "Deduplication"
+description: "How AdsCrush prevents duplicate conversions"
+---
+
+## Click Deduplication
+
+Based on `media_buyer_id` + `product_id` + `ip_hash` within a 24-hour window. Duplicate clicks are recorded but flagged as `isUnique: false`.
+
+## Conversion Deduplication
+
+Based on `click_id` + `event` combination. Duplicate conversions get status `rejected` with payout/revenue set to `0`.
+
+## Client-Side Dedup (SDK)
+
+The Web SDK sets a localStorage flag after successful tracking to prevent duplicate requests from the same browser.

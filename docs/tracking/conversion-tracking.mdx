@@ -1,0 +1,24 @@
+---
+title: "Conversion Tracking Overview"
+description: "Three methods to track conversions in AdsCrush"
+---
+
+## Methods
+
+| Method | Setup | Latency | Reliability |
+|--------|-------|---------|-------------|
+| **Web SDK** | JavaScript snippet | Real-time | High |
+| **Pixel** | 1x1 transparent GIF | Instant | Medium |
+| **Postback** | Server-to-server | Real-time | Highest |
+
+## Common Fields
+
+| Field | Description |
+|-------|-------------|
+| `event` | Conversion event name (default: "conversion") |
+| `payout` | Amount paid to media buyer |
+| `revenue` | Amount charged to advertiser |
+| `sale_amount` | Total sale transaction amount |
+| `currency` | Currency code (e.g. USD, EUR) |
+| `coupon` | Coupon or promo code used |
+| `adv_sub1-5` | Custom advertiser sub-parameters |

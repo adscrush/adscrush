@@ -1,0 +1,47 @@
+---
+title: "Track Clicks"
+description: "Manually capture and track click IDs with the AdsCrush SDK"
+icon: "mouse-pointer-click"
+---
+
+The SDK automatically captures the click ID (`tid`) from your URL. Use these methods for manual control.
+
+## Auto-Capture (Default)
+
+When the SDK loads, it automatically looks for `?tid=...` in the URL and stores it.
+
+## Manual Set
+
+```javascript
+AdsCrushSDK.setClickId('abc-123-def-456')
+```
+
+## Get Click ID
+
+```javascript
+const clickId = AdsCrushSDK.getClickId()
+console.log(clickId) // "abc-123-def-456" or null
+```
+
+## Custom Parameter Name
+
+If your URL uses `?clickid=...` instead of `?tid=...`:
+
+```html
+<script>
+  window.adscrushConfig = {
+    paramName: 'clickid'
+  }
+</script>
+<script src="https://sdk.adscrush.com/v1/index.iife.min.js"></script>
+```
+
+## Check If Already Tracked
+
+```javascript
+if (AdsCrushSDK.hasTrackedConversion('purchase')) {
+  console.log('Already tracked')
+}
+```
+
+**See also:** [Track Conversions](/sdk/track-conversion) · [Track Leads](/sdk/track-lead) · [API Reference](/sdk/api-reference)

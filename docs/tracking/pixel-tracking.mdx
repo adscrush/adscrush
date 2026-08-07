@@ -1,0 +1,28 @@
+---
+title: "Pixel Tracking"
+description: "Fire-and-forget conversion tracking via a 1x1 transparent GIF"
+---
+
+## Endpoint
+
+```bash
+GET https://track.adscrush.com/conversion/pixel?tid={clickId}&event=conversion
+```
+
+## Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `tid` | ✅ | Click ID from tracking link |
+| `event` | ❌ | Event name (default: "conversion") |
+| `payout` | ❌ | Payout override |
+| `sale_amount` | ❌ | Sale amount |
+
+## HTML Example
+
+```html
+<img src="https://track.adscrush.com/conversion/pixel?tid=550e8400-e29b-41d4-a716-446655440000&event=purchase&sale_amount=99.99"
+     width="1" height="1" style="display:none" />
+```
+
+Browser loads the pixel, server records the conversion in the background, returns a 1x1 transparent GIF (43 bytes).

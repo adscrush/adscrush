@@ -1,0 +1,39 @@
+---
+title: "Campaigns"
+description: "Create and manage advertising campaigns"
+---
+
+Campaigns wire together products, funnels, ad accounts, and creatives.
+
+## Fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Campaign display name |
+| **Product** | Linked product (derived from funnel) |
+| **Funnel** | Funnel for landing page resolution |
+| **Status** | Active, Inactive, Paused, Expired |
+| **Start Date** | Campaign start date |
+| **End Date** | Campaign end date |
+
+## Components
+
+| Component | Purpose |
+|-----------|---------|
+| **Ad Accounts** | Traffic sources — generates tracking links |
+| **Creatives** | Ad creatives for performance tracking |
+| **Funnel** | Landing pages for traffic routing |
+
+## Tracking Links
+
+Each ad account assigned to a campaign produces a unique tracking URL:
+
+```
+https://tracking.domain/c?c={campaignId}&aa={adAccountId}
+```
+
+## Metrics
+
+Real-time stats: Clicks, Conversions, Revenue, Payout, Profit, CR, RPC, EPC.
+
+**See also:** [Tracking Links](/tracking/tracking-links) · [Click Tracking](/tracking/click-tracking)

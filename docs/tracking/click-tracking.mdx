@@ -1,0 +1,39 @@
+---
+title: "Click Tracking"
+description: "The GET /c endpoint — entry point for all traffic"
+---
+
+## Endpoint
+
+```bash
+GET https://track.adscrush.com/c?c={campaignId}&aa={adAccountId}
+```
+
+## Required Parameters
+
+| Param | Description |
+|-------|-------------|
+| `c` | Campaign ID |
+| `aa` | Ad Account ID |
+
+## What Happens
+
+1. Validates campaign & ad account
+2. Resolves funnel & selects landing page
+3. GeoIP lookup (country, city, ASN, ISP)
+4. Device detection (OS, browser, device type)
+5. Captures UTM parameters & affiliate sub-IDs
+6. Encrypts IP and User-Agent
+7. Deduplicates (same IP + media buyer + product within 24h)
+8. Redirects to landing page with `clickid` injected
+
+## Response
+
+HTTP 302 redirect to the resolved landing page URL.
+
+On error:
+```json
+{ "error": "INVALID_LINK", "message": "This link is no longer valid or has expired" }
+```
+
+**See also:** [Click Parameters](/tracking/click-parameters) · [Landing Pages](/tracking/landing-pages) · [URL Macros](/tracking/url-macros)

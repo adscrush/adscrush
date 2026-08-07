@@ -1,0 +1,104 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "AdsCrush",
+  "theme": "maple",
+  "icons": {
+    "library": "lucide"
+  },
+  "colors": {
+    "primary": "#3b82f6",
+    "light": "#60a5fa",
+    "dark": "#2563eb"
+  },
+  "logo": {
+    "light": "/images/logo.png",
+    "dark": "/images/logo.png"
+  },
+  "favicon": "/images/favicon.png",
+  "background": {
+    "image": {
+      "light": "/images/background.avif",
+      "dark": "/images/background.avif"
+    }
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.adscrush.com"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Home",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "index",
+              "quickstart"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Platform",
+        "groups": [
+          {
+            "group": "Platform",
+            "pages": [
+              "platform/products",
+              "platform/funnels",
+              "platform/campaigns",
+              "platform/advertisers",
+              "platform/media-buyers",
+              "platform/ad-accounts",
+              "platform/creatives",
+              "platform/reports",
+              "platform/dashboard"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Tracking",
+        "groups": [
+          {
+            "group": "Tracking",
+            "pages": [
+              "tracking/click-tracking",
+              "tracking/click-parameters",
+              "tracking/tracking-links",
+              "tracking/landing-pages",
+              "tracking/url-macros",
+              "tracking/conversion-tracking",
+              "tracking/pixel-tracking",
+              "tracking/postback-api",
+              "tracking/deduplication",
+              "tracking/geo-device",
+              "tracking/lead-tracking",
+              "tracking/lead-postback",
+              "tracking/lead-pixel"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDK",
+        "groups": [
+          {
+            "group": "Web SDK",
+            "pages": [
+              "sdk/index",
+              "sdk/track-click",
+              "sdk/track-conversion",
+              "sdk/track-lead",
+              "sdk/api-reference"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

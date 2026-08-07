@@ -1,0 +1,41 @@
+---
+title: "Media Buyers"
+description: "Manage media buyer (affiliate) relationships and access"
+---
+
+Media buyers (affiliates/publishers) are the partners who drive traffic. They manage ad accounts and earn payouts on conversions.
+
+## Media Buyer Fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Media buyer name |
+| **Email** | Contact email |
+| **Status** | Active, Pending, Suspended |
+| **Kind** | Internal (employee), External (third-party affiliate) |
+| **Employee Link** | For internal media buyers, link to employee account |
+
+## Kinds
+
+| Kind | Description |
+|------|-------------|
+| `internal` | An employee who also runs traffic campaigns |
+| `external` | A third-party affiliate partner |
+
+## Product Visibility
+
+Media buyers can only promote products they have access to, based on product visibility settings:
+
+- **Public products** — Available to all active media buyers
+- **Private products** — Requires explicit approval
+- **Exclusive products** — Invitation only
+
+## Bulk Operations
+
+- Bulk delete
+- Bulk status update (activate, suspend)
+- Link to employee accounts
+
+## Ad Account Ownership
+
+Each media buyer owns their ad accounts (Facebook Business Manager, Google Ads accounts, etc.). These ad accounts are assigned to campaigns for tracking link generation.

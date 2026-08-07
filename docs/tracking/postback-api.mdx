@@ -1,0 +1,36 @@
+---
+title: "Postback API"
+description: "Server-to-server conversion tracking via POST JSON API"
+---
+
+## Endpoint
+
+```bash
+POST https://track.adscrush.com/conversion/track
+```
+
+## Request Body
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `tid` | `string` | Click tracking ID |
+| `event` | `string` | Event name (default: "conversion") |
+| `payout` | `string` | Payout override |
+| `sale_amount` | `string` | Sale amount |
+| `currency` | `string` | Currency code |
+| `coupon` | `string` | Coupon or promo code |
+| `adv_sub1-5` | `string` | Custom sub-parameters |
+
+## Example
+
+```bash
+curl -X POST https://track.adscrush.com/conversion/track \
+  -H "Content-Type: application/json" \
+  -d '{"tid": "550e8400-e29b-41d4-a716-446655440000", "event": "purchase", "payout": "25.00", "sale_amount": "99.99"}'
+```
+
+## Response
+
+```json
+{ "success": true, "isDuplicate": false, "conversionId": "conv_abc123" }
+```

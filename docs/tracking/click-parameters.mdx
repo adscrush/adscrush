@@ -1,0 +1,60 @@
+---
+title: "Click Query Parameters"
+description: "Complete reference of all supported click tracking query parameters"
+---
+
+## Required
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `c` | `string` | Campaign ID |
+| `aa` | `string` | Ad Account ID |
+
+## Optional — Funnel & Landing Page
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `f` | `string` | Funnel ID override (defaults to campaign's linked funnel) |
+| `lp` | `string` | Specific landing page ID to use |
+| `mo` | `string` | Landing page name match (case-insensitive, spaces stripped). Use `r` for random |
+| `cr` | `string` | Creative ID for attribution and performance tracking |
+
+## Optional — UTM Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| `utm_source` | Traffic source (e.g. facebook, google, newsletter) |
+| `utm_medium` | Marketing medium (e.g. cpc, email, social) |
+| `utm_campaign` | Campaign name |
+| `utm_term` | Paid search keywords |
+| `utm_content` | Ad content variation |
+
+## Optional — Affiliate Sub-IDs
+
+| Parameter | Description |
+|-----------|-------------|
+| `aff_click_id` | Affiliate network's click ID |
+| `sub_aff_id` | Sub-affiliate ID |
+| `aff_sub1` through `aff_sub10` | Custom sub-parameters for passing affiliate data |
+
+## Example URLs
+
+**Basic tracking link:**
+```
+https://tracking.example.com/c?c=campaign_abc&aa=adaccount_123
+```
+
+**With creative and landing page:**
+```
+https://tracking.example.com/c?c=campaign_abc&aa=adaccount_123&cr=creative_456&lp=landing_789
+```
+
+**With UTM and sub-IDs:**
+```
+https://tracking.example.com/c?c=campaign_abc&aa=adaccount_123&utm_source=facebook&utm_medium=cpc&aff_sub1=custom_value
+```
+
+**With named landing page:**
+```
+https://tracking.example.com/c?c=campaign_abc&aa=adaccount_123&mo=blackfriday
+```

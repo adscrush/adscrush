@@ -1,0 +1,53 @@
+---
+title: "Lead Postback API"
+description: "Server-to-server lead submission via POST JSON API"
+---
+
+## Endpoints
+
+| Method | Endpoint | Use Case |
+|--------|----------|----------|
+| `POST` | `/lead/postback` | Full lead data including PII |
+| `GET` | `/lead/postback` | TID + sub-fields only (no PII) |
+
+## POST Request
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `tid` | `string` | ✅ | Click tracking ID |
+| `tid` | `string` | ✅ | Click tracking ID (or use `click_id` — same thing) |
+| `name` | `string` | ❌ | Lead's full name |
+| `phone` | `string` | ❌ | Phone number |
+| `email` | `string` | ❌ | Email address |
+| `address` | `string` | ❌ | Street address |
+| `pincode` | `string` | ❌ | Postal code / pincode |
+| `city` | `string` | ❌ | City |
+| `state` | `string` | ❌ | State or province |
+| `sub1-sub5` | `string` | ❌ | Custom sub-parameters |
+| `payout` | `string` | ❌ | Payout override |
+| `currency` | `string` | ❌ | Currency code (default: USD) |
+
+<Note>At least one of `name`, `phone`, or `email` is required. All other fields are optional.</Note>
+
+## Copy-Paste Example
+
+Replace `tid` and `X-API-Key` with your own values and run it:
+
+```bash
+curl -X POST https://track.adscrush.com/lead/postback \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: your_api_key" \
+  -d '{"tid": "550e8400-e29b-41d4-a716-446655440000", "name": "John", "phone": "+1234567890", "email": "john@example.com", "address": "221B Baker Street", "pincode": "400001", "city": "Mumbai", "state": "Maharashtra"}'
+```
+
+**Using a different click ID parameter?** Both `tid` and `click_id` are accepted — `tid` is used when both are present.
+
+## Response
+
+```json
+{ "success": true, "leadId": "lead_abc123", "isDuplicate": false }
+```
+
+## Deduplication
+
+One lead per click is enforced. Duplicate submissions return `isDuplicate: true` with the existing `leadId`.

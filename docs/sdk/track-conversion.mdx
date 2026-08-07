@@ -1,0 +1,111 @@
+---
+title: 'Track Conversions'
+description: 'Track purchases, signups, leads, and custom events with the AdsCrush SDK'
+icon: 'chart-line'
+---
+
+```javascript
+AdsCrushSDK.trackConversion({
+  conversionData: {
+    event: 'purchase',
+    saleAmount: '99.99',
+    payout: '15.00',
+    currency: 'USD'
+  }
+})
+```
+
+<Check>The SDK automatically uses the click ID captured from the landing page URL.</Check>
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `conversionData.event` | `string` | Event name (default: "conversion") |
+| `conversionData.saleAmount` | `string \| number` | Customer paid amount |
+| `conversionData.payout` | `string \| number` | Your commission |
+| `conversionData.currency` | `string` | Currency code (default: USD) |
+| `conversionData.coupon` | `string` | Coupon/promo code |
+| `conversionData.advSub1-5` | `string` | Custom sub-parameters |
+| `method` | `'pixel' \| 'iframe' \| 'postback'` | Tracking method (default: pixel) |
+| `clickId` | `string` | Override click ID (optional) |
+| `domain` | `string` | Per-call tracking domain override (defaults to the `domain` from `init()` config) |
+| `keymapping` | `string[]` | Map URL params to conversion fields, e.g. `['advSub1:aff_sub1']` (explicit values win) |
+| `onSuccess` | `(response?) => void` | Success callback |
+| `onError` | `(error: Error) => void` | Error callback |
+
+## Examples
+
+### With Callbacks
+
+```javascript
+AdsCrushSDK.trackConversion({
+  conversionData: { event: 'purchase', saleAmount: '99.99' },
+  onSuccess: (response) => console.log('ID:', response.conversionId),
+  onError: (error) => console.error(error)
+})
+```
+
+### Key Mapping
+
+Fill conversion fields automatically from URL parameters on the current page:
+
+```javascript
+AdsCrushSDK.trackConversion({
+  conversionData: { event: 'purchase', saleAmount: '99.99' },
+  keymapping: ['advSub1:aff_sub1', 'coupon:promo']
+})
+// → advSub1 filled from ?aff_sub1=..., coupon from ?promo=...
+```
+
+Conversion fields: `advSub1`–`advSub5`, `coupon`, `currency`, `event`,
+`saleAmount`, `payout`. Explicitly provided values always win over keymapped
+values.
+
+### Multiple Events
+
+```javascript
+// Lead capture
+AdsCrushSDK.trackConversion({ conversionData: { event: 'email_captured' } })
+
+// Purchase
+AdsCrushSDK.trackConversion({ conversionData: { event: 'purchase', saleAmount: '99.99' } })
+```
+
+## Custom Tracking Domain
+
+To use a custom tracking domain, set it once in `window.adscrushConfig` — it
+is used by **both** `trackConversion()` and `trackLead()`:
+
+```html
+<script>
+  window.adscrushConfig = {
+    domain: 'track.yourdomain.com'
+  }
+</script>
+<script src="https://sdk.adscrush.com/v1/index.iife.min.js"></script>
+```
+
+Or pass it per-call, which overrides the config value for this conversion only:
+
+```javascript
+AdsCrushSDK.trackConversion({
+  conversionData: { event: 'purchase', saleAmount: '99.99' },
+  domain: 'track.yourdomain.com'
+})
+```
+
+Bare hostnames are normalized to `https://`; full URLs (`http://` or `https://`)
+are used as-is (trailing slashes are stripped).
+
+## Deduplication
+
+The SDK prevents duplicate conversions for the same `click_id + event` combination. Second calls are skipped automatically.
+
+```javascript
+if (AdsCrushSDK.hasTrackedConversion('purchase')) {
+  console.log('Already tracked')
+}
+```
+
+**See also:** [Track Clicks](/sdk/track-click) · [Track Leads](/sdk/track-lead) · [API Reference](/sdk/api-reference) · [Conversion Postback](/tracking/postback-api)

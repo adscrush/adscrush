@@ -1,0 +1,140 @@
+---
+title: "Track Leads"
+description: "Track lead form submissions with the AdsCrush SDK"
+icon: "user-plus"
+---
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John Doe",
+  phone: "+1234567890",
+  email: "john@example.com",
+  address: "221B Baker Street",
+  pincode: "400001",
+  city: "Mumbai",
+  state: "Maharashtra"
+})
+```
+
+<Check>The SDK automatically uses the click ID captured from the landing page URL.</Check>
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `name` | `string` | Lead's full name |
+| `phone` | `string` | Phone number |
+| `email` | `string` | Email address |
+| `address` | `string` | Street address |
+| `pincode` | `string` | Postal code / pincode |
+| `city` | `string` | City |
+| `state` | `string` | State or province |
+| `sub1-sub5` | `string` | Custom sub-parameters |
+| `payout` | `string \| number` | Payout override |
+| `currency` | `string` | Currency code (default: USD) |
+| `method` | `'pixel' \| 'iframe' \| 'postback'` | Tracking method (default: pixel) |
+| `domain` | `string` | Per-call tracking domain override (defaults to the `domain` from `init()` config) |
+| `keymapping` | `string[]` | Map URL params to lead fields, e.g. `['sub1:aff_sub1']` (explicit values win) |
+| `onSuccess` | `(response?) => void` | Success callback |
+| `onError` | `(error: Error) => void` | Error callback |
+
+## Examples
+
+### With Address Details
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John Doe",
+  phone: "+1234567890",
+  email: "john@example.com",
+  address: "221B Baker Street",
+  pincode: "400001",
+  city: "Mumbai",
+  state: "Maharashtra"
+})
+```
+
+### With Sub-Fields
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John Doe",
+  phone: "+1234567890",
+  email: "john@example.com",
+  sub1: "campaign_123",
+  sub2: "variant_a"
+})
+```
+
+### With Callbacks
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John Doe",
+  phone: "+1234567890",
+  email: "john@example.com",
+  onSuccess: (response) => console.log("Lead ID:", response.leadId),
+  onError: (error) => console.error(error)
+})
+```
+
+### Key Mapping
+
+Fill lead fields automatically from URL parameters on the current page:
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John Doe",
+  keymapping: ["sub1:aff_sub1", "sub2:utm_campaign"]
+})
+// → sub1 filled from ?aff_sub1=..., sub2 from ?utm_campaign=...
+```
+
+Lead fields: `name`, `phone`, `email`, `address`, `pincode`, `city`, `state`, `sub1`–`sub5`, `payout`, `currency`.
+Explicitly provided values always win over keymapped values.
+
+### Postback Method
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John",
+  phone: "+1234567890",
+  method: "postback",
+  onSuccess: (response) => console.log(response.leadId)
+})
+```
+
+## Custom Tracking Domain
+
+By default the SDK posts to `track.adscrush.com`. To use a custom tracking
+domain, set it once in `window.adscrushConfig` — it is used by **both**
+`trackLead()` and `trackConversion()`:
+
+```html
+<script>
+  window.adscrushConfig = {
+    domain: "track.yourdomain.com"
+  }
+</script>
+<script src="https://sdk.adscrush.com/v1/index.iife.min.js"></script>
+```
+
+Or pass it directly to `trackLead()` — this overrides the config value for this
+call only:
+
+```javascript
+AdsCrushSDK.trackLead({
+  name: "John Doe",
+  phone: "+1234567890",
+  domain: "track.yourdomain.com"
+})
+```
+
+Bare hostnames are normalized to `https://`; full URLs (`http://` or `https://`)
+are used as-is (trailing slashes are stripped).
+
+## Deduplication
+
+The SDK prevents duplicate leads for the same click ID. Second calls are skipped automatically.
+
+**See also:** [Track Clicks](/sdk/track-click) · [Track Conversions](/sdk/track-conversion) · [API Reference](/sdk/api-reference)
