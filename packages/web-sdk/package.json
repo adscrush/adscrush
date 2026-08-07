@@ -1,0 +1,64 @@
+{
+  "name": "@adscrush/web-sdk",
+  "version": "1.2.0",
+  "description": "Official JavaScript SDK for AdsCrush conversion tracking",
+  "author": "AdsCrush <support@adscrush.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/adscrush/adscrush#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adscrush/adscrush.git",
+    "directory": "packages/web-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/adscrush/adscrush/issues"
+  },
+  "keywords": [
+    "adscrush",
+    "conversion-tracking",
+    "affiliate-marketing",
+    "analytics",
+    "sdk",
+    "tracking",
+    "advertising",
+    "media-buyer"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.iife.min.js",
+  "jsdelivr": "dist/index.iife.min.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "prepublishOnly": "pnpm build && pnpm typecheck",
+    "deploy:pages": "pnpm build && node ./scripts/deploy-pages.mjs"
+  },
+  "devDependencies": {
+    "@adscrush/eslint-config": "workspace:*",
+    "@adscrush/typescript-config": "workspace:*",
+    "eslint": "^9.39.2",
+    "@types/node": "^25.1.0",
+    "jsdom": "^29.1.1",
+    "tsup": "^8.3.3",
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.77.0"
+  }
+}

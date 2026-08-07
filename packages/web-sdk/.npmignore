@@ -1,0 +1,46 @@
+# Exclude source files
+src/
+*.ts
+!dist/**/*.d.ts
+
+# Config files
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+
+# Test files
+**/__tests__/
+**/*.test.ts
+**/*.spec.ts
+
+# Build artifacts
+node_modules/
+.turbo/
+.cache/
+
+# Git files
+.git/
+.gitignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Development files
+.DS_Store
+*.log
+.env
+.env.local
+
+# Optional: Exclude detailed docs (keep README and QUICKSTART)
+ARCHITECTURE.md
+EXAMPLES.md
+INTEGRATION.md
+OFFER18_MIGRATION.md
+SDK_DEPLOYMENT.md
+SUMMARY.md
+FINAL_SUMMARY.md
+NPM_PUBLISHING_GUIDE.md
+
+# Scripts
+scripts/
